@@ -6,13 +6,35 @@ import {sampleData} from '../../../api/sampleData';
 
 const EventDashboard = (props)=>{
     const [events,setEvents] = useState(sampleData);
+
+    const handleCreateEvent=(event)=>{
+        setEvents([...events,event]);
+    };
+
+    const handleSetEvent=(updatedEvent)=>{
+        setEvents(events.map(e => e.id===updatedEvent.id ? updatedEvent : e));
+        props.onEventSelect(null);
+        //props.setFormOpen(false);
+
+    }
+    const handleDeleteEvent = (eventId)=>{
+        setEvents(events.filter(e=>e.id!==eventId));
+    };
     return (
         <Grid>
             <Grid.Column width={10}>
-                <EventList events={sampleData}/>
+                <EventList events={events} onEventSelect={props.onEventSelect} deleteEvent={handleDeleteEvent}/>
             </Grid.Column>
             <Grid.Column width={6}>
-                {props.formOpen===true? <EventForm setFormOpen={props.setFormOpen}/> : ''}
+                {props.formOpen &&
+                <EventForm setFormOpen={props.setFormOpen}
+                 setEvents={setEvents} createEvent={handleCreateEvent} 
+                 selectedEvent={props.selectedEvent}
+                 updateEvent={handleSetEvent}
+                 key={props.selectedEvent?props.selectedEvent.id : null}
+                 /> 
+
+                }
                 
             </Grid.Column>
         </Grid>
