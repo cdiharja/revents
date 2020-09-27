@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Header, Segment ,Button} from 'semantic-ui-react';
 
 function EventForm({setFormOpen,setEvents,createEvent,selectedEvent,updateEvent}){
@@ -47,7 +48,7 @@ function EventForm({setFormOpen,setEvents,createEvent,selectedEvent,updateEvent}
                     <input type="date" placeholder="Date" name="date"  value={values.date} onChange={(e)=>handleInputChange(e)}/>
                 </Form.Field>
                 <Button type="submit" floated="right" positive content="Submit"></Button>
-                <Button onClick={()=>setFormOpen(false)} type="submit" floated="right" content="Cancel"></Button>
+                <Button as={Link} to="/events" type="submit" floated="right" content="Cancel"></Button>
             </Form>
         </Segment>
     )
