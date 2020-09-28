@@ -20,8 +20,9 @@ const NavBar = (props)=>{
                     Re-vent
                 </Menu.Item>
                 <Menu.Item name="events" as={NavLink} to="/events"/>
+                 <Menu.Item name="sandbox" as={NavLink} to="/sandbox"/>
                 {isAuthenticated && <Menu.Item as={NavLink} to="/createEvent">
-                    <Button positive inverted content="Create Event" onClick={()=>props.setFormOpen(true)}></Button>
+                    <Button positive inverted content="Create Event"></Button>
                 </Menu.Item>}
                 {isAuthenticated ?   <SignedInMenu handleSignOut={handleSignOut}/> :  <SignedOutMenu setIsAuthenticated={setIsAuthenticated}/>}
             </Container>
