@@ -7,6 +7,7 @@ import EventDetailedPage from './features/eventDetailed/EventDetailedPage';
 import EventDashboard from './features/events/eventDashboard/EventDashboard';
 import EventForm from './features/events/eventForm/EventForm';
 import HomePage from './features/home/HomePage';
+import ModalManager from './features/modals/ModalManager';
 import NavBar from './features/nav/NavBar';
 import Sandbox from './sandbox/Sandbox';
 
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <Fragment>
+      <ModalManager/>
        <Route path="/" exact component={HomePage}/>
        <Route path={'/(.+)'} render={()=>(
          <>
