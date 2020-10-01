@@ -1,5 +1,5 @@
 import { SIGN_IN_USER, SIGN_OUT_USER } from "./authConstants";
-
+//maps:AIzaSyBDPBpA_Ps1eWGcglAHyGgRzfSfSnjmFdw
 const initialState={
     authenticated:false,
     currentUser:{

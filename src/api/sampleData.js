@@ -1,8 +1,8 @@
 export const sampleData = [
     {
         id: '1',
-        title: 'Trip to Empire State building',
-        date: new Date('2018-03-21'),
+        title: 'Trip to Empire State buildingX',
+        date: new Date('2018-03-21 12:00:00'),
         category: 'culture',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
         city: 'NY, USA',
@@ -24,8 +24,8 @@ export const sampleData = [
     },
     {
         id: '2',
-        title: 'Trip to Punch and Judy Pub',
-        date: new Date('2018-03-11'),
+        title: 'Punch and Judy Pub',
+        date: new Date('2018-03-11 15:22:45'),
         category: 'drinks',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sollicitudin ligula eu leo tincidunt, quis scelerisque magna dapibus. Sed eget ipsum vel arcu vehicula ullamcorper.',
         city: 'London, UK',

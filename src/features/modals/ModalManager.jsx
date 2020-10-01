@@ -9,7 +9,7 @@ export default function ModalManager(){
         LoginForm
     };
     const currentModal = useSelector(state => state.modals);
-    console.log(currentModal);
+    //console.log(currentModal);
     let renderedModal;
     if(currentModal){
         const {modalType,modalProps} = currentModal;

@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { Item, Segment,List,Button,Icon } from 'semantic-ui-react';
 import { deleteEvent } from '../eventAction';
 import EventListAttendee from './EventListAttendee';
-import {format} from 'date-fns';
+//import {format} from 'date-fns';
 function EventListItem({event}){
     const dispatch = useDispatch();
+    //console.log(event.date);
     return (
         <Segment.Group>
             <Segment>
@@ -22,7 +23,7 @@ function EventListItem({event}){
             </Segment>
             <Segment>
                 <span>
-                    <Icon name="clock"/>{format(event.date,"MMMM d, yyyy h:mm a")}
+                    <Icon name="clock"/>{event.date.toString()}
                     <Icon name="marker"/>{event.venue}
                 </span>
             </Segment>

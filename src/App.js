@@ -10,7 +10,7 @@ import HomePage from './features/home/HomePage';
 import ModalManager from './features/modals/ModalManager';
 import NavBar from './features/nav/NavBar';
 import Sandbox from './sandbox/Sandbox';
-
+import {ToastContainer} from 'react-toastify';
 function App() {
   const {key} = useLocation();
   // const [formOpen,setFormOpen] = useState(false);  
@@ -29,6 +29,7 @@ function App() {
   return (
     <Fragment>
       <ModalManager/>
+      <ToastContainer position="bottom-right"/>
        <Route path="/" exact component={HomePage}/>
        <Route path={'/(.+)'} render={()=>(
          <>

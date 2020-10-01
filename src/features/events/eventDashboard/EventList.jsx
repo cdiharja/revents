@@ -14,9 +14,9 @@ function EventList({events}){
     )
 }
 
-const mapStateToProps = (state)=>{
-    return {
-        events: state.event.events
-    };
-};
+// const mapStateToProps = (state)=>{
+//     return {
+//         events: state.event.events
+//     };
+// };
 export default EventList;
