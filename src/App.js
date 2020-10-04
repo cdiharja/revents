@@ -11,6 +11,7 @@ import ModalManager from './features/modals/ModalManager';
 import NavBar from './features/nav/NavBar';
 import Sandbox from './sandbox/Sandbox';
 import {ToastContainer} from 'react-toastify';
+import ErrorComponent from './ErrorComponent';
 function App() {
   const {key} = useLocation();
   // const [formOpen,setFormOpen] = useState(false);  
@@ -39,7 +40,7 @@ function App() {
               <Route path="/events" exact component={EventDashboard}/>
               <Route path="/events/:id" component={EventDetailedPage}/>
               <Route path={["/createEvent","/manage/:id"]} component={EventForm} key={key}/>
-
+              <Route path="/error" component={ErrorComponent}/>
               {/* <EventDashboard formOpen={formOpen} setFormOpen={setFormOpen} onEventSelect={handleSelectEvent} selectedEvent={selectedEvent}/> */}
           </Container>
          </>

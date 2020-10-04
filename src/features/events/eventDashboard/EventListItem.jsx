@@ -1,12 +1,13 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Item, Segment,List,Button,Icon } from 'semantic-ui-react';
-import { deleteEvent } from '../eventAction';
+import { Item, Segment,List,Button,Icon, Label } from 'semantic-ui-react';
+import { deleteEventInFirestore } from '../../../firestore/firestoreService';
+//import { deleteEvent } from '../eventAction';
 import EventListAttendee from './EventListAttendee';
 //import {format} from 'date-fns';
 function EventListItem({event}){
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     //console.log(event.date);
     return (
         <Segment.Group>
@@ -17,6 +18,11 @@ function EventListItem({event}){
                         <Item.Content>
                             <Item.Header content={event.title}></Item.Header>
                             <Item.Description>{event.description}</Item.Description>
+                            {event.isCancelled && (
+                                <Label color="red" content="Cancelled">
+                                    
+                                </Label>
+                            )}
                         </Item.Content>
                     </Item>
                 </Item.Group>
@@ -29,7 +35,7 @@ function EventListItem({event}){
             </Segment>
             <Segment secondary>
                 <List horizontal>
-                    {event.attendees.map(attendee=>( 
+                    {event.attendees && event.attendees.map(attendee=>( 
                         <EventListAttendee attendee={attendee} key={attendee.id}/>)
                     )}
                    
@@ -38,7 +44,7 @@ function EventListItem({event}){
             <Segment clearing>
                 <span>{event.description}</span>
                 <Button color="teal" floated="right" as={Link} to={`/events/${event.id}`}>View</Button>
-                <Button color="red" floated="right" onClick={()=>dispatch(deleteEvent(event.id))}>Delete</Button>
+                <Button color="red" floated="right" onClick={()=>deleteEventInFirestore(event.id)}>Delete</Button>
             </Segment>
         </Segment.Group>
     )

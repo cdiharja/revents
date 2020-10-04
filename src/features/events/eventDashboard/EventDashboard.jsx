@@ -1,14 +1,38 @@
 import React from 'react';
 import {Grid} from 'semantic-ui-react';
 import EventList from './EventList';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 //import LoadingComponent from '../../LoadingComponent';
 import EventListItemPlaceholder from './EventListItemPlaceholder';
 import EventFilters from './EventFilters';
+import {  listenToEventsFromFirestore } from '../../../firestore/firestoreService';
+import { listenToEvents } from '../eventAction';
+import useFirestoreCollection from '../../../hooks/useFirestoreCollection';
 
 const EventDashboard = (props)=>{
+    const dispatch = useDispatch();
     const {events} = useSelector(state=>state.event);
     const {loading} = useSelector(state=>state.async);
+
+    // useEffect(()=>{
+    //     dispatch(asyncActionStart());
+    //     const unsubscribe = getEventsFromFirestore({
+    //         next:snapshot => {
+              
+    //             console.log(snapshot.docs.map(docSnapshot=>dataFromSnapshot(docSnapshot)));
+    //             dispatch(listenToEvents(snapshot.docs.map(docSnapshot=>dataFromSnapshot(docSnapshot))));
+    //             dispatch(asyncActionFinish());
+    //         },
+    //         error:error=> dispatch(asyncActionError(error))
+    //     })
+    //     return unsubscribe;
+    // },[dispatch]);
+
+    useFirestoreCollection({
+        query:()=> listenToEventsFromFirestore(),
+        data:events => dispatch(listenToEvents(events)),
+        deps:[dispatch]
+    })
     //const [events,setEvents] = useState(sampleData);
 
     // const handleCreateEvent=(event)=>{
