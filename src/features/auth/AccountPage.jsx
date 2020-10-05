@@ -1,8 +1,8 @@
 
-import { Formik } from 'formik';
+import { Formik,Form } from 'formik';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Segment,Header, Form, Button, Label } from 'semantic-ui-react';
+import { Segment,Header, Button, Label } from 'semantic-ui-react';
 import * as Yup from 'yup';
 import { updateUserPassword } from '../../firestore/firebaseService';
 import MyTextInput from '../MyTextInput';
@@ -46,8 +46,8 @@ const AccountPage = ()=>{
 
                     
                 >
-                    {({errors,isSubmitting,isValid,dirty,handleSubmit})=>(
-                        <Form className="ui form" onSubmit={handleSubmit}>
+                    {({errors,isSubmitting,isValid,dirty})=>(
+                        <Form className="ui form">
                             <MyTextInput name='newPassword1' type='password' placeholder='p1'/>
                             <MyTextInput name='newPassword2' type='password' placeholder='p2'/>
                             {errors.auth && <Label color="red" content={errors.auth}/>}
