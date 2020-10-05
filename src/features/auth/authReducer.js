@@ -2,10 +2,7 @@ import { SIGN_IN_USER, SIGN_OUT_USER } from "./authConstants";
 //maps:AIzaSyBDPBpA_Ps1eWGcglAHyGgRzfSfSnjmFdw
 const initialState={
     authenticated:false,
-    currentUser:{
-        email:"bob@email.com",
-        photoURL:'/assets/user.png'                    
-    }
+    currentUser:null,
 };
 export default function authReducer(state=initialState,{type,payload}){
     switch(type){
@@ -14,7 +11,11 @@ export default function authReducer(state=initialState,{type,payload}){
                 authenticated:true,
                 currentUser:{
                     email:payload.email,
-                    photoURL:'/assets/user.png'                    
+                    photoURL:payload.photoURL  ,
+                    uid:payload.uid,
+                    displayName:payload.displayName,
+                    providerId:payload.providerData[0].providerId
+
                 }
             }
         case SIGN_OUT_USER:

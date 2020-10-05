@@ -9,7 +9,7 @@ const SignedOutMenu = ({setIsAuthenticated})=> {
     return (
         <Menu.Item position="right">
         <Button positive inverted content="Login" onClick={()=>dispatch(openModal({modalType:"LoginForm"}))}></Button>
-        <Button positive inverted content="Register" style={{marginLeft:'5px'}}></Button>
+        <Button positive inverted content="Register"  onClick={()=>dispatch(openModal({modalType:"RegisterForm"}))} style={{marginLeft:'5px'}}></Button>
         </Menu.Item>
     );
 }
